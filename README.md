@@ -32,12 +32,13 @@ import seaborn as sns
 dt=pd.read_csv("/content/titanic_dataset.csv")
 dt
 ```
-![311099824-d12e34b6-a208-46d2-9e02-2860002e8089](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/e9d70dbc-ea08-4873-ae09-3798a3477cc5)
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/57272d58-ca70-4ce9-83a3-87ab4019a3b7)
+
 
 ```
 dt.info()
 ```
-![311099844-729875bb-e3fc-4c91-89da-883bc2400d29](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/a60d0abe-ecd2-4f4d-a5b6-a477ae96837b)
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/6898b3cf-3a41-4b2d-9c44-533395884d7e)
 
 ```
 dt.shape
@@ -55,21 +56,16 @@ dt.nunique()
 ```
 ![311099897-24404bf7-7cbe-4dfe-934e-4df366660737](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/f2d58808-a860-401a-987b-990f2da4da29)
 ```
-dt["Survived"].value_counts()
+dt["Pclass"].value_counts()
 ```
-![311099933-018abaad-a788-4cf6-b2ae-a2ab28772793](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/d2b11229-b562-4a0a-8e19-afe5fe4cb049)
-
-```
-per=(dt["Survived"].value_counts()/dt.shape[0]*100).round(2)
-per
-```
-![311099956-44a97d7b-081e-470b-b88a-130d20867e4d](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/58634f63-04af-45f3-8ddf-f1b3539edd03)
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/6e9b33c4-0800-4d8b-8428-906df28550d3)
 
 ### Univariate analysis:
 ```
-sns.countplot(data=dt,x="Survived")
+sns.countplot(data=dt,x="Cabin")
 ```
-![311099986-6923fca1-1bb8-426b-8913-bf5efc5f8870](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/cb6ca763-ab0d-46f1-a73a-bf31c2e8f68c)
+
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/f9cbb8d7-0a9d-4f08-83d1-72dd22390e1b)
 
 ```
 dt.Pclass.unique()
@@ -84,10 +80,10 @@ dt
 
 ### Bivariate analysis:
 ```
-sns.catplot(x="Gender",col="Survived",kind="count",data=dt,height=5,aspect=.7)
+sns.catplot(x="Parch",col="Pclass",kind="count",data=dt,height=5,aspect=.7)
 ```
-![311100726-59a84a4b-8b93-4896-9a7d-0b5046695f72](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/4707cc33-49b4-4767-bd2d-f160418e5b9f)
 
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/f69f775e-bb63-4f99-a58c-561af181abdd)
 ```
 sns.catplot(x='Survived',hue="Gender",data=dt,kind="count")
 ```
@@ -99,9 +95,10 @@ dt.boxplot(column="Age",by="Survived")
 ![311100774-17ab0861-c128-47e7-a313-116bedd8e100](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/8212e3d7-3564-4b73-909f-010654945a16)
 
 ```
-sns.scatterplot(x=dt["Age"],y=dt["Fare"])
+sns.scatterplot(x=dt["Age"],y=dt["SibSp"])
 ```
-![311100789-359b469f-9633-44f0-aa1b-d7474f573f2a](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/0e3d0459-6891-41ab-b7f1-2d1f86286aca)
+
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/52ecd60c-63aa-4cbb-ac67-d83f168f6992)
 
 ```
 sns.jointplot(x="Age",y="Fare",data=dt)
@@ -122,9 +119,11 @@ sns.catplot(data=dt,col="Survived",x="Gender",hue="Pclass",kind="count")
 ### Co-relation:
 ```
 corr = dt.corr()
-sns.heatmap(corr,annot=True)
+sns.heatmap(corr,annot=False)
 ```
-![311100915-b567f5df-36f7-4dd0-9948-248e116c1514](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/2d54d3ac-54b0-4105-a47b-07182aaa0cdf)
+
+![image](https://github.com/Kowsalyasathya/EXNO2DS/assets/118671457/51d2f061-9eb4-453a-9472-f375f1d81649)
+
 ```
 sns.pairplot(dt)
 ```
